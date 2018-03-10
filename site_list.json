@@ -1,0 +1,15 @@
+{
+    "国际": [
+        ["人民网-国际频道", "http://www.people.com.cn/rss/world.xml"]
+    ],
+    "时政": [
+        ["人民网-时政频道", "http://www.people.com.cn/rss/politics.xml"]
+    ],
+    "军事": [
+        ["新浪军事", "http://rss.sina.com.cn/roll/mil/hot_roll.xml"]
+    ],
+    "程序员": [
+        ["SegmentFalut-文章", "https://segmentfault.com/articles/feeds"],
+        ["伯乐在线", "http://blog.jobbole.com/feed/"]
+    ]
+}
