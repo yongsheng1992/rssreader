@@ -3,7 +3,7 @@
     ~~~~~~~
 """
 from flask import jsonify, request
-from rssreader.api import APIMethodView
+from rssreader.api.base import APIMethodView
 from rssreader.exts import db
 from rssreader.models import Site, Category
 from rssreader.exceptions import APIException

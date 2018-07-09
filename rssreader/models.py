@@ -28,7 +28,7 @@ class Site(Base):
     __tablename__ = 'rss'
     name = db.Column(db.String(64), unique=True, nullable=False)
     link = db.Column(db.String(255), unique=True, nullable=False)
-    category = db.Column(db.String(64))
+    category = db.Column(db.String(64), default='默认')
     description = db.Column(db.Text)
 
 
@@ -38,4 +38,3 @@ class Entry(Base):
     link = db.Column(db.String(255), nullable=False, unique=True)
     site_name = db.Column(db.String(64), nullable=False)
     published_at = db.Column(db.DateTime, default=datetime.now())
-

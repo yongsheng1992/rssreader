@@ -3,7 +3,7 @@
 """
 from flask import Flask
 from config import config
-from rssreader.exts import db
+from rssreader.exts import db, admin
 from rssreader.decorators import app_key_required
 
 
@@ -12,6 +12,7 @@ def create_app(config_name):
     app.config.from_object(config[config_name])
 
     db.init_app(app)
+    admin.init_app(app)
 
     from rssreader.api.category import CategoryListAPI
     from rssreader.api.site import SiteListAPI
@@ -32,4 +33,3 @@ def create_app(config_name):
         return 'hello'
 
     return app
-
