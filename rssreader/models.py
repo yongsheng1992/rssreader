@@ -13,9 +13,6 @@ class Base(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.now(), onupdate=datetime.now())
 
     def to_dict(self):
-        _d = {}
-        for c in self.__table__.columns:
-            pass
         return {c.name: getattr(self, c.name, None) for c in self.__table__.columns}
 
 
