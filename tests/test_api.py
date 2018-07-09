@@ -2,10 +2,10 @@
     test_api.py
     ~~~~~~~~~~~
 """
+import json
 import unittest
 from rssreader import create_app
 from rssreader.exts import db
-import json
 
 
 class APITestCase(unittest.TestCase):
