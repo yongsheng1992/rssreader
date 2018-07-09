@@ -21,6 +21,6 @@ class TestConfig(Config):
 
 
 config = {
-    'dev': DevelopmentConfig,
-    'test': TestConfig
+    'production': DevelopmentConfig,
+    'development': TestConfig
 }

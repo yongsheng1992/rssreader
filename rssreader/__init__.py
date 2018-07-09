@@ -1,6 +1,7 @@
 """
     __init__.py
 """
+import os
 from flask import Flask
 from flask_admin.contrib.sqla import ModelView
 from config import config
@@ -12,6 +13,7 @@ def create_app(config_name):
     """Create flask app instance by given config name."""
     app = Flask(__name__)
     app.config.from_object(config[config_name])
+    # app.config.from_envvar('RSSREADER_CONFIG')
 
     db.init_app(app)
     admin.init_app(app)

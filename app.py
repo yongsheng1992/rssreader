@@ -2,13 +2,13 @@
     app.py
     ~~~~~~
 """
+import os
 import click
 from rssreader import create_app
 from rssreader.exts import db
 from rssreader.models import Category, Site, Entry
 
-
-app = create_app('test')
+app = create_app(os.getenv('FLASK_ENV') or 'development')
 
 
 @app.shell_context_processor
