@@ -3,5 +3,14 @@
 一个基于web的RSS/ATOM订阅器。
 
 ## To Do List
-- [ ] Cli处理环境变量
+- [x] Cli处理环境变量
 
+## How
+
+### 处理环境变量
+
+官方文档中使用`FLASK_ENV`来区分当前的环境是开发还是生产环节，这里也根据该变量来加载不同的配置:
+
+```python
+app = create_app(os.getenv('FLASK_ENV') or 'development')
+```

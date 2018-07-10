@@ -25,9 +25,14 @@ def create_app(config_name):
     admin.add_view(ModelView(Entry, db.session))
 
 
+    from .blueprints.main import main_bp
+
+    app.register_blueprint(main_bp)
+    
     from rssreader.api.category import CategoryListAPI
     from rssreader.api.site import SiteListAPI
     from rssreader.api.entry import EntryListAPI
+    
 
     app.add_url_rule('/api/v1/categories',
                      view_func=CategoryListAPI.as_view('api_categories'),
