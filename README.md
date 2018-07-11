@@ -1,6 +1,7 @@
 # Rssreader
 
-一个基于web的RSS/ATOM订阅器。
+一个基于web的RSS/ATOM订阅器。因为对于前端不是很熟悉，所以使用Bootstrap4和jQuery开发前端页面。
+
 
 ## To Do List
 - [x] Cli处理环境变量

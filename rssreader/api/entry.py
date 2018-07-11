@@ -15,13 +15,25 @@ class EntryListAPI(APIMethodView):
         page = request.args.get('page', 1, type=int)
         per_page = request.args.get('per_page', 20, type=int)
         site = request.args.get('site', None, type=str)
+        category = request.args.get('category', None, type=str)
 
         _filter = {}
         if site:
             _filter['site_name'] = site
+        
+        if category:
+            _filter['category'] = category
 
-        pagination = Entry.query.filter_by(**_filter).paginate(page, per_page)
-        return jsonify([entry.to_dict() for entry in pagination.items])
+        pagination = Entry.query.filter_by(**_filter) \
+            .order_by(Entry.published_at.desc()) \
+            .paginate(page, per_page)
+        return jsonify({
+            'total': pagination.total,
+            'page': page,
+            'per_page': per_page,
+            'pages': pagination.pages,
+            'items': [entry.to_dict() for entry in pagination.items]
+        })
 
     def post(self):
         try:

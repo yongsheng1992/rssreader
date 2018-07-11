@@ -3,7 +3,6 @@
     ~~~~~~
 """
 import os
-import click
 from rssreader import create_app
 from rssreader.exts import db
 from rssreader.models import Category, Site, Entry
@@ -40,16 +39,22 @@ def crontab():
     """Linux crontab excute this function."""
     from libs.parse import parse_feed
     sites = Site.query.all()
+    entries = []
     for site in sites:
         for title, link, published_at in parse_feed(site.link):
-            entry = Entry(
-                title=title,
-                link=link,
-                site_name=site.name,
-                published_at=published_at
-            )
-            db.session.add(entry)
-    db.session.commit()
+            entries.append({
+                'title': title,
+                'link': link,
+                'site_name': site.name,
+                'published_at': published_at,
+                'category': site.category
+            })
+    # For handling IntegrityError, use IGNORE when insert bulk data.
+    db.session.execute(Entry.__table__.insert().prefix_with('OR IGNORE'), entries)
+    try:
+        db.session.commit()
+    except Exception:
+        db.session.rollback()
 
 
 if __name__ == '__main__':

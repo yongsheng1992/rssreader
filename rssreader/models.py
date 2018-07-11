@@ -34,4 +34,5 @@ class Entry(Base):
     title = db.Column(db.String(126), nullable=False)
     link = db.Column(db.String(255), nullable=False, unique=True)
     site_name = db.Column(db.String(64), nullable=False)
+    category = db.Column(db.String(64))
     published_at = db.Column(db.DateTime, default=datetime.now())

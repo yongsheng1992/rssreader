@@ -34,13 +34,13 @@ def create_app(config_name):
     from rssreader.api.entry import EntryListAPI
     
 
-    app.add_url_rule('/api/v1/categories',
+    app.add_url_rule('/api/categories',
                      view_func=CategoryListAPI.as_view('api_categories'),
                      methods=['GET', 'POST'])
-    app.add_url_rule('/api/v1/sites',
+    app.add_url_rule('/api/sites',
                      view_func=SiteListAPI.as_view('api_sites'),
                      methods=['GET', 'POST'])
-    app.add_url_rule('/api/v1/entries',
+    app.add_url_rule('/api/entries',
                      view_func=EntryListAPI.as_view('api_entries'),
                      methods=['GET', 'POST'])
 
